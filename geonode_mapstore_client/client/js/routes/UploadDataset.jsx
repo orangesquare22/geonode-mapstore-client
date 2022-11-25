@@ -25,10 +25,10 @@ import UploadListContainer from '@js/routes/upload/UploadListContainer';
 import UploadContainer from '@js/routes/upload/UploadContainer';
 import { getConfigProp } from '@mapstore/framework/utils/ConfigUtils';
 import { parseUploadResponse, processUploadResponse, parseUploadFiles } from '@js/utils/ResourceUtils';
-import { getFileNameParts, getFileType } from '@js/utils/FileUtils';
+import { getFileNameParts } from '@js/utils/FileUtils';
 
 function getDatasetFileType(file, supportedTypes) {
-    const type = getFileType(file);
+    const { type } = file;
     const { ext } = getFileNameParts(file);
     const datasetFileType = supportedTypes.find((fileType) =>
         (fileType.ext || []).includes(ext)
