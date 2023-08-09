@@ -13,7 +13,6 @@ import merge from 'lodash/merge';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import {
-    getPendingUploads,
     getProcessedUploadsById,
     getProcessedUploadsByImportId,
     uploadDataset,
