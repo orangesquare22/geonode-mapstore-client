@@ -655,17 +655,6 @@ export const downloadResource = (resource) => {
         .then(({ data, headers }) => ({output: data, headers}));
 };
 
-export const getPendingUploads = () => {
-    return axios.get(parseDevHostname(endpoints[UPLOADS]), {
-        params: {
-            'filter{-state}': 'PROCESSED',
-            'page': 1,
-            'page_size': 99999
-        }
-    })
-        .then(({ data }) => data?.uploads);
-};
-
 export const getPendingExecutionRequests = () => {
     return axios.get(parseDevHostname(endpoints[EXECUTIONREQUEST]), {
         params: {
@@ -870,7 +859,6 @@ export default {
     copyResource,
     downloadResource,
     getDatasets,
-    getPendingUploads,
     getPendingExecutionRequests,
     getProcessedUploadsById,
     getProcessedUploadsByImportId,
