@@ -276,8 +276,8 @@
             "selectFiles": "Seleziona file...",
             "addUrl": "Aggiungi URL...",
             "duplicateUrl": "Questo URL è già presente nell'elenco dei caricamenti",
-            "unsupportedUrlExtension": "Extension is not supported",
-            "supportedFiles": "L'estensione non è supportata",
+            "unsupportedUrlExtension": "Estensioni non supportate",
+            "supportedFiles": "Estensioni supportate",
             "unsupportedFiles": "File non supportati per il caricamento",
             "upload": "Carica",
 
