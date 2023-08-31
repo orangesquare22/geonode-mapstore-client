@@ -58,7 +58,7 @@ const ResourceMessage = ({ type, pathname, formatHref }) => {
                 href={formatHref({
                     pathname,
                     query: {
-                        'filter{resource_type.in}': type
+                        'f': type
                     }
                 })}
             >
