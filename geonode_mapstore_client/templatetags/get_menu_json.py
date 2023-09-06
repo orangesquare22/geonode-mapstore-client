@@ -79,7 +79,12 @@ def get_base_right_topbar_menu(context):
         "href": "/",
         "label": "Home"
     }
-    user = context.get('request').user
+    
+    user = None
+    request = context.get('request')
+    if request:
+        user = request.user
+    
     about = {
             "label": "About",
             "type": "dropdown",
@@ -96,7 +101,7 @@ def get_base_right_topbar_menu(context):
                 }
             ]
         }
-    if user.is_authenticated and not Configuration.load().read_only:
+    if user and user.is_authenticated and not Configuration.load().read_only:
         about['items'].extend([
             {
                 "type": "divider"
@@ -124,9 +129,13 @@ def get_base_right_topbar_menu(context):
 def get_user_menu(context):
 
     is_mobile = _is_mobile_device(context)
-    user = context.get('request').user
+    
+    user = None
+    request = context.get('request')
+    if request:
+        user = request.user
 
-    if not user.is_authenticated:
+    if not user or (user and not user.is_authenticated):
         return [
             {
                 "label": "Register",
