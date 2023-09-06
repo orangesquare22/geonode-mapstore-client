@@ -115,7 +115,8 @@
         const siteName = '{{ SITE_NAME }}' || 'Geonode';
         const geoServerPublicLocation = '{{ GEOSERVER_PUBLIC_LOCATION }}' || '';
         const isMobile = '{{ request.user_agent.is_mobile }}' === 'True' ? true : false;
-
+        {% block override_settings %}
+        {% endbloc %
         window.__GEONODE_CONFIG__ = {
             languageCode: '{{ LANGUAGE_CODE }}',
             languages: languages,
