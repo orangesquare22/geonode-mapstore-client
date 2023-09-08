@@ -108,8 +108,10 @@
                 }
 
                 const newQueryHash = newParams.join('&');
-
+                
+                {% block searchbar_search_href %}
                 location.href = '/catalogue/#/search' + (newQueryHash ? '?' + newQueryHash : '');
+                {% endblock %}
 
                 clearRequest();
                 suggestions = [];
@@ -122,12 +124,14 @@
                 loading = true;
                 searchLoading.style.visibility = 'visible';
                 timeout = setTimeout(function() {
+                    {% block searchbar_url_suggestion %}
                     const url = '/api/v2/resources' +
                     '?page=' + options.page +
                     '&search=' + options.value +
                     '&search_fields=title' +
                     '&search_fields=abstract' +
                     '&filter{metadata_only}=false';
+                    {% endblock %}
                     request = $.ajax({
                         url: url,
                         type: 'GET',
