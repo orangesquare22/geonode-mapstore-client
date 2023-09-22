@@ -83,10 +83,10 @@ export const getApiToken = () => {
  * @returns {Object} updated params
  */
 export const paramsSerializer = (params) => {
-    const {include, exclude, ...rest} = params ?? {}; // Update bracket params (if any)
+    const {include, exclude, sort, ...rest} = params ?? {}; // Update bracket params (if any)
     let queryParams = '';
-    if (!isEmpty(include) || !isEmpty(exclude)) {
-        queryParams = queryString.stringify({include, exclude}, { arrayFormat: 'bracket'});
+    if (!isEmpty(include) || !isEmpty(exclude) || !isEmpty(sort)) {
+        queryParams = queryString.stringify({include, exclude, sort}, { arrayFormat: 'bracket'});
     }
     if (!isEmpty(rest)) {
         queryParams = (isEmpty(queryParams) ? '' : `${queryParams}&`) + queryString.stringify(rest);
