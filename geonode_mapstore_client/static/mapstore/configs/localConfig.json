@@ -713,7 +713,7 @@
                                 {
                                     "type": "query",
                                     "labelId": "gnviewer.category",
-                                    "value": "{context.get(state('gnResourceData'), 'category.identifier')}",
+                                    "value": "{context.get(state('gnResourceData'), 'category.gn_description')}",
                                     "pathname": "/",
                                     "query": {
                                         "filter{category.identifier}": "{context.get(state('gnResourceData'), 'category.identifier')}"
@@ -1589,7 +1589,7 @@
                                 {
                                     "type": "query",
                                     "labelId": "gnviewer.category",
-                                    "value": "{context.get(state('gnResourceData'), 'category.identifier')}",
+                                    "value": "{context.get(state('gnResourceData'), 'category.gn_description')}",
                                     "pathname": "/",
                                     "query": {
                                         "filter{category.identifier}": "{context.get(state('gnResourceData'), 'category.identifier')}"
@@ -2237,7 +2237,7 @@
                                 {
                                     "type": "query",
                                     "labelId": "gnviewer.category",
-                                    "value": "{context.get(state('gnResourceData'), 'category.identifier')}",
+                                    "value": "{context.get(state('gnResourceData'), 'category.gn_description')}",
                                     "pathname": "/",
                                     "query": {
                                         "filter{category.identifier}": "{context.get(state('gnResourceData'), 'category.identifier')}"
@@ -2552,7 +2552,7 @@
                                 {
                                     "type": "query",
                                     "labelId": "gnviewer.category",
-                                    "value": "{context.get(state('gnResourceData'), 'category.identifier')}",
+                                    "value": "{context.get(state('gnResourceData'), 'category.gn_description')}",
                                     "pathname": "/",
                                     "query": {
                                         "filter{category.identifier}": "{context.get(state('gnResourceData'), 'category.identifier')}"
@@ -2785,7 +2785,7 @@
                                 {
                                     "type": "query",
                                     "labelId": "gnviewer.category",
-                                    "value": "{context.get(state('gnResourceData'), 'category.identifier')}",
+                                    "value": "{context.get(state('gnResourceData'), 'category.gn_description')}",
                                     "pathname": "/",
                                     "query": {
                                         "filter{category.identifier}": "{context.get(state('gnResourceData'), 'category.identifier')}"
@@ -3312,7 +3312,7 @@
                                 {
                                     "type": "query",
                                     "labelId": "gnviewer.category",
-                                    "value": "{context.get(state('gnResourceData'), 'category.identifier')}",
+                                    "value": "{context.get(state('gnResourceData'), 'category.gn_description')}",
                                     "pathname": "/",
                                     "query": {
                                         "filter{category.identifier}": "{context.get(state('gnResourceData'), 'category.identifier')}"
