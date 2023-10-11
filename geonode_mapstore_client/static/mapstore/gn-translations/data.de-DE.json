@@ -342,15 +342,15 @@
                 "to": "Datum bis"
             },
             "sourceType": "Quelle",
-            "locations": "Standorte",
+            "locations": "Ort",
             "boundingBox": "Begrenzungsrahmen (WGS84)",
             "center": "Center (WGS84)",
             "minLat": "Min Lat",
             "minLon": "Min Lon",
             "maxLat": "Max Lat",
             "maxLon": "Max Lon",
-            "centerLat": "Center Lat",
-            "centerLon": "Center Lon",
+            "centerLat": "Lat",
+            "centerLon": "Lon",
             "mapExtentHelpText": "<b>Sie können die Ausdehnung und Position dieser Ressource bearbeiten</b>. Shift-Klick und ziehen Sie, um eine neue Ausdehnung zu zeichnen, klicken Sie auf die Markierung und klicken und ziehen Sie dann, um ihre Position festzulegen"
         }
     }

@@ -341,15 +341,15 @@
                 "to": "Fecha hasta"
             },
             "sourceType": "Fuente",
-            "locations": "Ubicaciones",
+            "locations": "Ubicacion",
             "boundingBox": "Cuadro delimitador (WGS84)",
             "center": "Centro (WGS84)",
             "minLat": "Min Lat",
             "minLon": "Min Lon",
             "maxLat": "Max Lat",
             "maxLon": "Max Lon",
-            "centerLat": "Centro Lat",
-            "centerLon": "Centro Lon",
+            "centerLat": "Lat",
+            "centerLon": "Lon",
             "mapExtentHelpText": "<b>Puedes editar la extensión y posición de este recurso</b>. Shift-clic y arrastre para dibujar una nueva extensión, haga clic en el marcador y luego haga clic y arrastre para establecer su posición"
         }
     }
