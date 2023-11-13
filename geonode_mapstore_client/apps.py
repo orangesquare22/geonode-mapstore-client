@@ -77,6 +77,12 @@ def run_setup_hooks(*args, **kwargs):
         }
     }
 
+    settings.CACHES["services_cache"] = {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "TIMEOUT": 300,
+        "OPTIONS": {"MAX_ENTRIES": 10000},
+    }
+
 def connect_geoserver_style_visual_mode_signal():
     from geonode.geoserver.signals import geoserver_automatic_default_style_set
     from geonode_mapstore_client.utils import set_default_style_to_open_in_visual_mode
@@ -87,6 +93,7 @@ class AppConfig(BaseAppConfig):
 
     name = "geonode_mapstore_client"
     label = "geonode_mapstore_client"
+    verbose_name = "Mapstore Client"
 
     def ready(self):
 
