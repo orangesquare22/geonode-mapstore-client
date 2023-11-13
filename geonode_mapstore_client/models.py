@@ -16,14 +16,14 @@ class SearchService(models.Model):
         return f"{self.display_name} - {self.url}"
 
     display_name = models.CharField(
-        max_length=250, null=False, verbose_name="displayName"
+        max_length=250, null=False, verbose_name="Display name"
     )
-    priority = models.IntegerField(null=False, verbose_name="priority", default=3)
+    priority = models.IntegerField(null=False, verbose_name="Priority", default=3)
     url = models.CharField(
         max_length=250,
         null=False,
         verbose_name="Url of the WFS service",
-        default="{state('settings') && state('settings').geoserverUrl ? state('settings').geoserverUrl + '/wfs' : '/geoserver/wfs'}",
+        default="",
     )
     typename = models.CharField(
         max_length=250,
@@ -35,13 +35,13 @@ class SearchService(models.Model):
         max_length=250,
         null=False,
         base_field=models.CharField(max_length=250, null=False),
-        verbose_name="attributes",
+        verbose_name="Attributes",
         help_text="Attribute lists, the search is performed in this fields",
     )
     sortby = models.CharField(
         max_length=250,
         null=False,
-        verbose_name="sortby",
+        verbose_name="Sort By",
         help_text="Sorting attribute, must be a dataset attribute",
     )
     srsName = models.CharField(
@@ -49,17 +49,17 @@ class SearchService(models.Model):
     )
     maxFeatures = models.IntegerField(
         null=False,
-        verbose_name="srsName",
+        verbose_name="Max Features",
         default=20,
-        help_text="Max feature returned by the search",
+        help_text="Max number of feature returned by the search",
     )
 
 @receiver(signals.post_save, sender=SearchService)
 def post_save_search_service(instance, sender, created, **kwargs):
     # reset subsite object cache
-    services_cache = caches["search_options_services"]
-    services = services_cache.get("search_options")
+    services_cache = caches["search_services"]
+    services = services_cache.get("search_services")
     if services:
-        services_cache.delete("search_options")
+        services_cache.delete("search_services")
 
-    services_cache.set("search_options", populate_search_service_options(), 300)
+    services_cache.set("search_services", populate_search_service_options(), 300)

@@ -77,7 +77,7 @@ def run_setup_hooks(*args, **kwargs):
         }
     }
 
-    settings.CACHES["services_cache"] = {
+    settings.CACHES["search_services"] = {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         "TIMEOUT": 300,
         "OPTIONS": {"MAX_ENTRIES": 10000},
