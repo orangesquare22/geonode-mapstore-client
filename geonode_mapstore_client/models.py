@@ -16,13 +16,13 @@ class SearchService(models.Model):
         return f"{self.display_name} - {self.url}"
 
     display_name = models.CharField(
-        max_length=250, null=False, verbose_name="Display name"
+        max_length=250, null=False, verbose_name="Display name", help_text="Ex. 'UNESCO - {properties.site}'"
     )
     priority = models.IntegerField(null=False, verbose_name="Priority", default=3)
     url = models.CharField(
         max_length=250,
         null=False,
-        verbose_name="Url of the WFS service",
+        verbose_name="URL of the WFS service",
         default="",
     )
     typename = models.CharField(
@@ -36,7 +36,7 @@ class SearchService(models.Model):
         null=False,
         base_field=models.CharField(max_length=250, null=False),
         verbose_name="Attributes",
-        help_text="Attribute lists, the search is performed in this fields",
+        help_text="Comma separated list of attributes. Search is performed on these fields. Only textual fields can be configured",
     )
     sortby = models.CharField(
         max_length=250,
@@ -45,7 +45,8 @@ class SearchService(models.Model):
         help_text="Sorting attribute, must be a dataset attribute",
     )
     srsName = models.CharField(
-        max_length=250, null=False, verbose_name="srsName", default="EPSG:4326"
+        max_length=250, null=False, verbose_name="SRS name", default="EPSG:4326",
+        help_text="EPSG:xxxx code for the CRS of returned geometries",
     )
     maxFeatures = models.IntegerField(
         null=False,
