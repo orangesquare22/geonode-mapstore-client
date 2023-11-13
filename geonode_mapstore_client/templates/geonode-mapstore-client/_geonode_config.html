@@ -2,6 +2,7 @@
 {% load base_tags %}
 {% load get_menu_json %}
 {% load apikey %}
+{% load get_search_services %}
 {% load static %}
 {% comment %}
     app and map configuration need to be normalized
@@ -9,6 +10,7 @@
 
 {% comment %} setting.py variables {% endcomment %}
 {{GEONODE_SETTINGS|json_script:"GEONODE_SETTINGS" }}
+{% get_services_dict as SEARCH_SERVICES_PAYLOAD %}
 
 {% comment %} menu items {% endcomment %}
 
@@ -251,3 +253,25 @@
 </script>
 {% endcomment %}
 {% endblock %}
+<script>
+    let overrideLocalConfigFn = window.__GEONODE_CONFIG__.overrideLocalConfig;
+    window.__GEONODE_CONFIG__.overrideLocalConfig = function(localConfig, _) {
+        Object.keys(localConfig.plugins).forEach((pageName) => {
+            if (['map_viewer'].includes(pageName)) {
+                localConfig.plugins[pageName].forEach((plugin) => {
+                    if (['Search'].includes(plugin.name)) {
+                        plugin.cfg = _.merge(
+                            plugin.cfg,
+                            {
+                                "searchOptions": {
+                                    "services": {{SEARCH_SERVICES_PAYLOAD|safe}}
+                                }
+                            }
+                        );
+                    }
+                });
+            }
+        });
+        return overrideLocalConfigFn(localConfig, _);
+    };
+</script>
