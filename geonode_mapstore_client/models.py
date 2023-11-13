@@ -55,7 +55,7 @@ class SearchService(models.Model):
     )
 
 @receiver(signals.post_save, sender=SearchService)
-def post_save_subsite(instance, sender, created, **kwargs):
+def post_save_search_service(instance, sender, created, **kwargs):
     # reset subsite object cache
     services_cache = caches["search_options_services"]
     services = services_cache.get("search_options")
