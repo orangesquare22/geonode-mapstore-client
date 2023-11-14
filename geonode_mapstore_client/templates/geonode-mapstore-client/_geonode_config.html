@@ -119,6 +119,18 @@
         let siteName = '{{ SITE_NAME }}' || 'Geonode';
         let geoServerPublicLocation = '{{ GEOSERVER_PUBLIC_LOCATION }}' || '';
         let isMobile = '{{ request.user_agent.is_mobile }}' === 'True' ? true : false;
+
+        const searchServicesPayload =  {{SEARCH_SERVICES_PAYLOAD|safe}};
+
+        let searchServicesPatchRules = searchServicesPayload.length ? ['map_viewer', 'dataset_viewr', 'map_viewer_mobile', 'dataset_viewer_mobile'].map(
+            (v, i) => ({
+                "op": "replace",
+                "jsonpath": `$.${v}..[?(@.name == 'Search')].cfg`,
+                "value": {"searchOptions": {"services":{{SEARCH_SERVICES_PAYLOAD|safe}}}}
+            })
+        ) : [];
+
+
         {% block override_settings %}
         {% endblock %}
         window.__GEONODE_CONFIG__ = {
@@ -129,7 +141,7 @@
             resourceType: '{{ resource.resource_type|default:"" }}',
             isEmbed: isEmbed,
             pluginsConfigKey: pluginsConfigKey,
-            pluginsConfigPatchRules: pluginsConfigPatchRules,
+            pluginsConfigPatchRules: [...searchServicesPatchRules, ...pluginsConfigPatchRules],
             apikey: '{%if user_apikey %}{{user_apikey}}{% else %}{% endif %}',
             localConfig: {
                 proxyUrl: {
@@ -253,25 +265,3 @@
 </script>
 {% endcomment %}
 {% endblock %}
-<script>
-    let overrideLocalConfigFn = window.__GEONODE_CONFIG__.overrideLocalConfig;
-    window.__GEONODE_CONFIG__.overrideLocalConfig = function(localConfig, _) {
-        Object.keys(localConfig.plugins).forEach((pageName) => {
-            if (['map_viewer'].includes(pageName)) {
-                localConfig.plugins[pageName].forEach((plugin) => {
-                    if (['Search'].includes(plugin.name)) {
-                        plugin.cfg = _.merge(
-                            plugin.cfg,
-                            {
-                                "searchOptions": {
-                                    "services": {{SEARCH_SERVICES_PAYLOAD|safe}}
-                                }
-                            }
-                        );
-                    }
-                });
-            }
-        });
-        return overrideLocalConfigFn(localConfig, _);
-    };
-</script>

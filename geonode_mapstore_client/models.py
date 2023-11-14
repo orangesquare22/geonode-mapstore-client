@@ -16,7 +16,7 @@ class SearchService(models.Model):
         return f"{self.display_name} - {self.url}"
 
     display_name = models.CharField(
-        max_length=250, null=False, verbose_name="Display name", help_text="Ex. 'UNESCO - {properties.site}'"
+        max_length=250, null=False, verbose_name="Result string", help_text="String to be returned as result, Ex. 'UNESCO - {properties.site}'"
     )
     priority = models.IntegerField(null=False, verbose_name="Priority", default=3)
     url = models.CharField(
@@ -29,7 +29,7 @@ class SearchService(models.Model):
         max_length=250,
         null=False,
         verbose_name="Typename",
-        help_text="Geonode alternate",
+        help_text="Layer name with workspace, e.g. geonode:layer",
     )
     attributes = ArrayField(
         max_length=250,
