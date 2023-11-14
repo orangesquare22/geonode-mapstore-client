@@ -19,14 +19,15 @@ def get_services_dict():
 
     return return_val
 
+
 def populate_search_service_options():
     from geonode_mapstore_client.models import SearchService
-    
+
     return_val = []
-    
+
     if getattr(settings, "MAPSTORE_INCLUDE_NOMINATIM_IN_CUSTOM_SEARCH_SERVICES", True):
         return_val.append({"type": "nominatim", "priority": 5})
-    
+
     for item in SearchService.objects.iterator():
         return_val.append(
             {
@@ -40,7 +41,7 @@ def populate_search_service_options():
                     "sortBy": f"{item.sortby}",
                     "srsName": f"{item.srsName}",
                     "maxFeatures": f"{item.maxFeatures}",
-                }
+                },
             }
         )
     return return_val

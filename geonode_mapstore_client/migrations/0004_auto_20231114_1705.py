@@ -4,20 +4,27 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('geonode_mapstore_client', '0003_searchservice'),
+        ("geonode_mapstore_client", "0003_searchservice"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='searchservice',
-            name='display_name',
-            field=models.CharField(help_text="String to be returned as result, Ex. 'UNESCO - {properties.site}'", max_length=250, verbose_name='Result string'),
+            model_name="searchservice",
+            name="display_name",
+            field=models.CharField(
+                help_text="String to be returned as result, Ex. 'UNESCO - {properties.site}'",
+                max_length=250,
+                verbose_name="Result string",
+            ),
         ),
         migrations.AlterField(
-            model_name='searchservice',
-            name='typename',
-            field=models.CharField(help_text='Layer name with workspace, e.g. geonode:layer', max_length=250, verbose_name='Typename'),
+            model_name="searchservice",
+            name="typename",
+            field=models.CharField(
+                help_text="Layer name with workspace, e.g. geonode:layer",
+                max_length=250,
+                verbose_name="Typename",
+            ),
         ),
     ]
