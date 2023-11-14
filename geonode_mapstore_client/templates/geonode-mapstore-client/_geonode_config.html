@@ -125,7 +125,7 @@
             (v, i) => ({
                 "op": "replace",
                 "jsonpath": `$.${v}..[?(@.name == 'Search')].cfg`,
-                "value": {"searchOptions": {"services":{{SEARCH_SERVICES_PAYLOAD|safe}}}}
+                "value": {"searchOptions": {"services": searchServicesPayload}
             })
         ) : [];
 
