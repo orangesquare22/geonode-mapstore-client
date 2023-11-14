@@ -121,7 +121,6 @@
         let isMobile = '{{ request.user_agent.is_mobile }}' === 'True' ? true : false;
 
         const searchServicesPayload =  {{SEARCH_SERVICES_PAYLOAD|safe}};
-
         let searchServicesPatchRules = searchServicesPayload.length ? ['map_viewer', 'dataset_viewr', 'map_viewer_mobile', 'dataset_viewer_mobile'].map(
             (v, i) => ({
                 "op": "replace",
@@ -129,7 +128,6 @@
                 "value": {"searchOptions": {"services":{{SEARCH_SERVICES_PAYLOAD|safe}}}}
             })
         ) : [];
-
 
         {% block override_settings %}
         {% endblock %}
