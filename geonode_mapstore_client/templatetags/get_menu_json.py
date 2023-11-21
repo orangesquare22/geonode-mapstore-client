@@ -27,6 +27,7 @@ def get_base_left_topbar_menu(context):
     is_mobile = _is_mobile_device(context)
 
     return [
+        {"type": "link", "href": "/", "label": "Home"},
         {
             "label": "Data",
             "type": "dropdown",
